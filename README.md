@@ -10,8 +10,8 @@ I'm not responsible for anything that goes badly when using this program.
 - Add a way to edit obtained items
 - Make it pretty
 
-[![Main View](/images/main.png]
+![Main View](/images/main.png)
 
-[![Map](/images/map.png]
+![Map](/images/map.png)
 
-[![Map InGame](/images/map2.png]
+![Map InGame](/images/map2.png)
