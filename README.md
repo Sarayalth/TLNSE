@@ -2,6 +2,7 @@
 Touhou Luna Nights Save Editor
 
 Right now is really a wip thing and really ugly.
+
 I'm not responsible for anything that goes badly when using this program.
 
 ### TODO:
