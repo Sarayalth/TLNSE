@@ -22,10 +22,12 @@ namespace TLNSE
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public string[] arrLine = new string[5];
         public string[] arrLine;
         string chosenFile = "ttttt";
         int init = new int();
+
+        int[] arrCheck = { 205, 203, 202, 201, 206, 208, 209, 211, 213 };
+        int[] arrText = { 101, 102, 111, 112, 113, 114, 115, 116, 117, 107, 119 };
 
         MapWindow win2 = new MapWindow();
 
@@ -33,46 +35,25 @@ namespace TLNSE
         public MainWindow()
         {
             InitializeComponent();
-            //string[] arrLine = File.ReadAllLines(chosenFile);
             this.Closing += Window_Closing;
-
 
             buttOpen.Click += ButtonOpenFile;
             buttClose.Click += ButtonSaveFile;
             MapButton.Click += MapWindowOpen;
-            //croqueta.Click += Test;
-
-            x.TextChanged += ArrayWrite;
-            y.TextChanged += ArrayWrite;
-
-            Amethyst.TextChanged += ArrayWrite;
-            Aquamarine.TextChanged += ArrayWrite;
-            Topaz.TextChanged += ArrayWrite;
-            Ruby.TextChanged += ArrayWrite;
-            Sapphire.TextChanged += ArrayWrite;
-            Emerald.TextChanged += ArrayWrite;
-            Diamond.TextChanged += ArrayWrite;
-            Exp.TextChanged += ArrayWrite;
-            Gold.TextChanged += ArrayWrite;
-
-            Meiling.Checked += ArrayWrite;
-            Meiling.Unchecked += ArrayWrite;
-            Intro.Checked += ArrayWrite;
-            Intro.Unchecked += ArrayWrite;
-            NitoriRobot.Checked += ArrayWrite;
-            NitoriRobot.Unchecked += ArrayWrite;
-            HiedaNoAkyuu.Checked += ArrayWrite;
-            HiedaNoAkyuu.Unchecked += ArrayWrite;
-            AkyuuCall.Checked += ArrayWrite;
-            AkyuuCall.Unchecked += ArrayWrite;
-            FirstUseWatch.Checked += ArrayWrite;
-            FirstUseWatch.Unchecked += ArrayWrite;
-            WaterWalk.Checked += ArrayWrite;
-            WaterWalk.Unchecked += ArrayWrite;
-            FirstDrink.Checked += ArrayWrite;
-            FirstDrink.Unchecked += ArrayWrite;
-            NitoriCall.Checked += ArrayWrite;
-            NitoriCall.Unchecked += ArrayWrite;
+            
+            foreach (int linea in arrCheck)
+            {
+                string illo = "_" + linea;
+                CheckBox check = GridMain.FindName(illo) as CheckBox;
+                check.Checked += ArrayWrite;
+                check.Unchecked += ArrayWrite;
+            }
+            foreach (int linea in arrText)
+            {
+                string illo = "_" + linea;
+                TextBox check = GridMain.FindName(illo) as TextBox;
+                check.TextChanged += ArrayWrite;
+            }
 
             init = 0;
             test.Click += TestButton;
@@ -97,9 +78,7 @@ namespace TLNSE
         public void MapWindowOpen(object sender, RoutedEventArgs e)
         {
             win2.CheckArray(arrLine);
-
             win2.ShowDialog();
-
             win2.ArrayWrite(arrLine);
         }
 
@@ -112,107 +91,25 @@ namespace TLNSE
         {
             if (init == 1)
             {
-                //Meiling
-                if (Meiling.IsChecked == true)
+                foreach (int linea in arrCheck)
                 {
-                    arrLine[205 - 1] = "1";
+                    string illo = "_" + linea;
+                    CheckBox check = GridMain.FindName(illo) as CheckBox;
+                    if (check.IsChecked == true)
+                    {
+                        arrLine[linea - 1] = "1";
+                    }
+                    else if (check.IsChecked == false)
+                    {
+                        arrLine[linea - 1] = "0";
+                    }
                 }
-                else if (Meiling.IsChecked == false)
+                foreach (int linea in arrText)
                 {
-                    arrLine[205 - 1] = "0";
+                    string illo = "_" + linea;
+                    TextBox check = GridMain.FindName(illo) as TextBox;
+                    arrLine[linea - 1] = check.Text;
                 }
-
-                //Intro
-                if (Intro.IsChecked == true)
-                {
-                    arrLine[203 - 1] = "1";
-                }
-                else if (Intro.IsChecked == false)
-                {
-                    arrLine[203 - 1] = "0";
-                }
-
-                //Nitori Robot
-                if (NitoriRobot.IsChecked == true)
-                {
-                    arrLine[202 - 1] = "1";
-                }
-                else if (NitoriRobot.IsChecked == false)
-                {
-                    arrLine[202 - 1] = "0";
-                }
-
-                //Hieda no Akyuu
-                if (HiedaNoAkyuu.IsChecked == true)
-                {
-                    arrLine[201 - 1] = "1";
-                }
-                else if (HiedaNoAkyuu.IsChecked == false)
-                {
-                    arrLine[201 - 1] = "0";
-                }
-
-                //Akyuu's Call
-                if (AkyuuCall.IsChecked == true)
-                {
-                    arrLine[206 - 1] = "1";
-                }
-                else if (AkyuuCall.IsChecked == false)
-                {
-                    arrLine[206 - 1] = "0";
-                }
-
-                //First Use Watch
-                if (FirstUseWatch.IsChecked == true)
-                {
-                    arrLine[208 - 1] = "1";
-                }
-                else if (FirstUseWatch.IsChecked == false)
-                {
-                    arrLine[208 - 1] = "0";
-                }
-
-                //Water Walk
-                if (WaterWalk.IsChecked == true)
-                {
-                    arrLine[209 - 1] = "1";
-                }
-                else if (WaterWalk.IsChecked == false)
-                {
-                    arrLine[209 - 1] = "0";
-                }
-
-                //First Drink
-                if (FirstDrink.IsChecked == true)
-                {
-                    arrLine[211 - 1] = "1";
-                }
-                else if (FirstDrink.IsChecked == false)
-                {
-                    arrLine[211 - 1] = "0";
-                }
-
-                //Nitori Call
-                if (NitoriCall.IsChecked == true)
-                {
-                    arrLine[213 - 1] = "1";
-                }
-                else if (NitoriCall.IsChecked == false)
-                {
-                    arrLine[213 - 1] = "0";
-                }
-
-                arrLine[101 - 1] = x.Text;
-                arrLine[102 - 1] = y.Text;
-                arrLine[111 - 1] = Amethyst.Text;
-                arrLine[112 - 1] = Aquamarine.Text;
-                arrLine[113 - 1] = Topaz.Text;
-                arrLine[114 - 1] = Ruby.Text;
-                arrLine[115 - 1] = Sapphire.Text;
-                arrLine[116 - 1] = Emerald.Text;
-                arrLine[117 - 1] = Diamond.Text;
-                arrLine[107 - 1] = Exp.Text;
-                arrLine[119 - 1] = Gold.Text;
             }
         }
 
@@ -243,140 +140,42 @@ namespace TLNSE
             buttClose.IsEnabled = true;
             MapButton.IsEnabled = true;
 
-            x.IsEnabled = true;
-            y.IsEnabled = true;
-
-            Meiling.IsEnabled = true;
-
-            Intro.IsEnabled = true;
-            NitoriRobot.IsEnabled = true;
-            HiedaNoAkyuu.IsEnabled = true;
-            AkyuuCall.IsEnabled = true;
-            FirstUseWatch.IsEnabled = true;
-            WaterWalk.IsEnabled = true;
-            FirstDrink.IsEnabled = true;
-            NitoriCall.IsEnabled = true;
-
-            Amethyst.IsEnabled = true;
-            Aquamarine.IsEnabled = true;
-            Topaz.IsEnabled = true;
-            Ruby.IsEnabled = true;
-            Sapphire.IsEnabled = true;
-            Emerald.IsEnabled = true;
-            Diamond.IsEnabled = true;
-            Exp.IsEnabled = true;
-            Gold.IsEnabled = true;
+            foreach (int linea in arrCheck)
+            {
+                string illo = "_" + linea;
+                CheckBox check = GridMain.FindName(illo) as CheckBox;
+                check.IsEnabled = true;
+            }
+            foreach (int linea in arrText)
+            {
+                string illo = "_" + linea;
+                TextBox check = GridMain.FindName(illo) as TextBox;
+                check.IsEnabled = true;
+            }
 
             init = 1;
         }
 
         public void Check(string[] arrLine)
         {
-            //Coordinates
-            x.Text = arrLine[101 - 1];
-            y.Text = arrLine[102 - 1];
-
-            //Gems
-            Amethyst.Text = arrLine[111 - 1];
-            Aquamarine.Text = arrLine[112 - 1];
-            Topaz.Text = arrLine[113 - 1];
-            Ruby.Text = arrLine[114 - 1];
-            Sapphire.Text = arrLine[115 - 1];
-            Emerald.Text = arrLine[116 - 1];
-            Diamond.Text = arrLine[117 - 1];
-
-            //Exp and Gold
-            Exp.Text = arrLine[107 - 1];
-            Gold.Text = arrLine[119 - 1];
-            
-            //Meiling
-            if (arrLine[205-1] == "0")
+            foreach (int linea in arrCheck)
             {
-                Meiling.IsChecked = false;
+                string illo = "_" + linea;
+                CheckBox check = GridMain.FindName(illo) as CheckBox;
+                if (arrLine[linea - 1] == "0")
+                {
+                    check.IsChecked = false;
+                }
+                else if (arrLine[linea - 1] == "1")
+                {
+                    check.IsChecked = true;
+                }
             }
-            else if (arrLine[205-1] == "1")
+            foreach (int linea in arrText)
             {
-                Meiling.IsChecked = true;
-            }
-
-            //Intro
-            if (arrLine[203 - 1] == "0")
-            {
-                Intro.IsChecked = false;
-            }
-            else if (arrLine[203 - 1] == "1")
-            {
-                Intro.IsChecked = true;
-            }
-
-            //Nitori Robot
-            if (arrLine[202 - 1] == "0")
-            {
-                NitoriRobot.IsChecked = false;
-            }
-            else if (arrLine[202 - 1] == "1")
-            {
-                NitoriRobot.IsChecked = true;
-            }
-
-            //Hieda no Akyuu
-            if (arrLine[201 - 1] == "0")
-            {
-                HiedaNoAkyuu.IsChecked = false;
-            }
-            else if (arrLine[201 - 1] == "1")
-            {
-                HiedaNoAkyuu.IsChecked = true;
-            }
-
-            //Akyuu's Call
-            if (arrLine[206 - 1] == "0")
-            {
-                AkyuuCall.IsChecked = false;
-            }
-            else if (arrLine[206 - 1] == "1")
-            {
-                AkyuuCall.IsChecked = true;
-            }
-
-            //First Use Watch
-            if (arrLine[208 - 1] == "0")
-            {
-                FirstUseWatch.IsChecked = false;
-            }
-            else if (arrLine[208 - 1] == "1")
-            {
-                FirstUseWatch.IsChecked = true;
-            }
-
-            //Water Walk
-            if (arrLine[209 - 1] == "0")
-            {
-                WaterWalk.IsChecked = false;
-            }
-            else if (arrLine[209 - 1] == "1")
-            {
-                WaterWalk.IsChecked = true;
-            }
-
-            //First Drink
-            if (arrLine[211 - 1] == "0")
-            {
-                FirstDrink.IsChecked = false;
-            }
-            else if (arrLine[211 - 1] == "1")
-            {
-                FirstDrink.IsChecked = true;
-            }
-
-            //Nitori Call
-            if (arrLine[213 - 1] == "0")
-            {
-                NitoriCall.IsChecked = false;
-            }
-            else if (arrLine[213 - 1] == "1")
-            {
-                NitoriCall.IsChecked = true;
+                string illo = "_" + linea;
+                TextBox check = GridMain.FindName(illo) as TextBox;
+                check.Text = arrLine[linea - 1];
             }
         }
 

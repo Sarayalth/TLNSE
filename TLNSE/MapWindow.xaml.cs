@@ -20,13 +20,11 @@ namespace TLNSE
     public partial class MapWindow : Window
     {
         int FUCKINGCLOSENOW = 0;
-
         int[] arrMap = { 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806 };
 
         public MapWindow()
         {
             InitializeComponent();
-
             this.Closing += Window_Closing;
         }
 
@@ -51,7 +49,6 @@ namespace TLNSE
             {
                 string illo = "_" + linea;
                 CheckBox check = Grillao.FindName(illo) as CheckBox;
-
                 if (arrLine[linea - 1] == "0")
                 {
                     check.IsChecked = false;
@@ -65,13 +62,10 @@ namespace TLNSE
 
         public void ArrayWrite(string[] arrLine)
         {
-            //Map
             foreach (int linea in arrMap)
             {
                 string illo = "_" + linea;
-                //CheckBox cb = illo as CheckBox;
                 CheckBox check = Grillao.FindName(illo) as CheckBox;
-
                 if (check.IsChecked == true)
                 {
                     arrLine[linea - 1] = "1";
