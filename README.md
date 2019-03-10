@@ -1,5 +1,5 @@
 # TLNSE
-Touhou Luna Nights Save Editor
+Touhou Luna Nights Save Editor (last tested version: 1.0.0.2)
 
 Right now is really a wip thing and really ugly.
 
