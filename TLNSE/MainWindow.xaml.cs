@@ -28,6 +28,8 @@ namespace TLNSE
 
         int[] arrCheck = { 205, 203, 202, 201, 206, 208, 209, 211, 213 };
         int[] arrText = { 101, 102, 111, 112, 113, 114, 115, 116, 117, 107, 119 };
+        //int[] arrUpgrades = { 61, 62, 63, 64, 65, 71, 72, 73, 74, 75, 81, 82, 83, 84, 91, 92, 93, 94, 95, 96 };
+        int[] arrUpgrades = { 61, 62 };
 
         MapWindow win2 = new MapWindow();
 
@@ -53,7 +55,16 @@ namespace TLNSE
                 string illo = "_" + linea;
                 TextBox check = GridMain.FindName(illo) as TextBox;
                 check.TextChanged += ArrayWrite;
+
             }
+            foreach (int linea in arrUpgrades)
+            {
+                string illo = "_" + linea;
+                CheckBox check = GridMain.FindName(illo) as CheckBox;
+                check.Checked += ArrayWrite;
+                check.Unchecked += ArrayWrite;
+            }
+
 
             init = 0;
             test.Click += TestButton;
@@ -110,6 +121,19 @@ namespace TLNSE
                     TextBox check = GridMain.FindName(illo) as TextBox;
                     arrLine[linea - 1] = check.Text;
                 }
+                foreach (int linea in arrUpgrades)
+                {
+                    string illo = "_" + linea;
+                    CheckBox check = GridMain.FindName(illo) as CheckBox;
+                    if (check.IsChecked == true)
+                    {
+                        arrLine[linea - 1] = (linea - 1).ToString();
+                    }
+                    else if (check.IsChecked == false)
+                    {
+                        arrLine[linea - 1] = "0";
+                    }
+                }
             }
         }
 
@@ -152,6 +176,12 @@ namespace TLNSE
                 TextBox check = GridMain.FindName(illo) as TextBox;
                 check.IsEnabled = true;
             }
+            foreach (int linea in arrUpgrades)
+            {
+                string illo = "_" + linea;
+                CheckBox check = GridMain.FindName(illo) as CheckBox;
+                check.IsEnabled = true;
+            }
 
             init = 1;
         }
@@ -176,6 +206,19 @@ namespace TLNSE
                 string illo = "_" + linea;
                 TextBox check = GridMain.FindName(illo) as TextBox;
                 check.Text = arrLine[linea - 1];
+            }
+            foreach (int linea in arrUpgrades)
+            {
+                string illo = "_" + linea;
+                CheckBox check = GridMain.FindName(illo) as CheckBox;
+                if (arrLine[linea - 1] == "0")
+                {
+                    check.IsChecked = false;
+                }
+                else if (arrLine[linea - 1] == (linea - 1).ToString())
+                {
+                    check.IsChecked = true;
+                }
             }
         }
 

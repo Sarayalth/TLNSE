@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TLNSE"
         mc:Ignorable="d"
-        Title="Touhou Luna Night's Save Editor" Height="303" Width="497.834" ResizeMode="NoResize">
+        Title="Touhou Luna Night's Save Editor" Height="385" Width="497.834" ResizeMode="NoResize">
     <Grid x:Name="GridMain">
         <Button x:Name="buttOpen" Content="Open" HorizontalAlignment="Left" Margin="393,17,0,0" VerticalAlignment="Top" Width="76" Height="30"/>
         <CheckBox x:Name="_205" Content="Meiling" HorizontalAlignment="Left" Margin="20,67,0,0" VerticalAlignment="Top" IsEnabled="False"/>
@@ -46,6 +46,8 @@
         <Button x:Name="MapButton" Content="Map" HorizontalAlignment="Left" Margin="394,193,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False"/>
         <Button x:Name="test" Content="Button" HorizontalAlignment="Left" Margin="17,164,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" IsEnabled="False"/>
         <TextBox x:Name="test2" HorizontalAlignment="Left" Height="23" Margin="10,197,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="99" IsEnabled="False" Visibility="Hidden"/>
+        <CheckBox x:Name="_61" Content="Stage 1 Knife upgrade" HorizontalAlignment="Left" Margin="18,239,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="_62" Content="Stage 2 Knife upgrade" HorizontalAlignment="Left" Margin="18,261,0,0" VerticalAlignment="Top" IsEnabled="False"/>
 
     </Grid>
 </Window>
